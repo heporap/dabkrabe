@@ -1,0 +1,358 @@
+@use "./conf";
+
+.wp-block-create-block-dabkrabe {
+	background-color: inherit;
+	color: inherit;
+}
+.dabkrabe {
+	border: 0 solid #fff;
+}
+
+.dabkrabe-description{
+	border: 0 none;
+	padding: 0;
+
+	&__flex {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__center {
+		text-align: center;
+	}
+	&>p {
+		flex-basis: 50%;
+		box-sizing: border-box;
+		//display: flex;
+	}
+	&>p.has-background {
+		//flex: 1 1;
+		//display: flex;
+	}
+}
+.dabkrabe-view {
+	max-width: 100%;
+	max-height: 100%;
+	position: relative;
+//	padding: 5px;
+
+	display: flex;
+//	align-items: center;
+	justify-content: center;
+
+	//&:fullscreen img{
+	//	width: auto;
+	//	height: auto;
+	//}
+
+}
+.dabkrabe-view-box{
+	position:relative;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+}
+.dabkrabe-compimages {
+	position: relative;
+	width: auto;
+	height: auto;
+	padding: 0;
+	overflow: hidden;
+	
+	&.cover{
+		width: 100%;
+		height: 100%;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&.fill{
+		width: 100%;
+		height: 100%;
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&.contain{
+		width: 100%;
+		height: 100%;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+}
+.dabkrabe-compimage {
+	top: 0;
+	left: 0;
+	//width: auto;
+	height: auto;
+	max-width:100%;
+	max-height:100%;
+	min-height: 50px;
+	background-color: #aaa;
+	padding: 0;
+	margin: 0;
+	vertical-align: bottom;
+
+}
+.dabkrabe-compimage__1 {
+	position: static;
+}
+.dabkrabe-compimage__2 {
+	position: absolute;
+//	height: 100%;
+	clip-path: inset(0 0 0 50%);
+}
+.dabkrabe-control {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	&>.dabkrabe-sep {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate( -50%, 0 );
+		width: conf.$sep-width;
+		height: calc( 50% - conf.$nib-size / 2 );
+		background-color: conf.$sep-color;
+		border-width: 0 conf.$sep-border-width 0 conf.$sep-border-width;
+		border-color: conf.$sep-border-color;
+		border-style: conf.$sep-border-style;
+		box-sizing: border-box;
+	}
+	&>.dabkrabe-sep:nth-child(1) {
+		top: 0;
+		bottom: auto;
+	}
+	&>.dabkrabe-sep:nth-child(2) {
+		top: auto;
+		bottom: 0;
+	}
+	&>.dabkrabe-nib {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+//		margin-left: - calc(conf.$sep-width * .5);
+		height: conf.$nib-size;
+		width: conf.$nib-size;
+		//background-color: conf.$nib-color;
+		border-radius: 100%;
+		//border: conf.$nib-border;
+		//rotate: 45deg;
+		//transform-origin: center;
+		//transform: translate( calc( -50% + conf.$sep-width ) , conf.$sep-width );
+		transform: translate( -50%, -50% );
+
+		&>svg{
+			width:100%;
+			height:100%;
+		}
+	}
+
+	&>.dabkrabe-pop{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		position: absolute;
+		bottom: 20px;
+		width: 24px;
+		height: 24px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&>div{
+			flex: 1 1;
+		}
+	}
+	.dabkrabe-fullscreen{
+		display: block;
+		height: 24px;
+		width: 24px;
+		background: rgba(0,0,0,0.5) url( conf.$assetdir + 'fullscreen.svg' ) no-repeat;
+		background-size: cover;
+
+	}
+	&.dabkrabe-fullscreen__vertical{
+			
+	}
+
+}
+
+.dabkrabe-captions {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	&>.dabkrabe-caption {
+		position: absolute;
+		display: inline-block;
+		width: auto;
+		top: 50%;
+		transform: translate(0, -50%);
+		background-color: rgba( 128, 128, 128, 0.5);
+		color: #fff;
+	}
+	&>.dabkrabe-caption__before {
+		left: 0;
+	}
+	&>.dabkrabe-caption__after {
+		right: 0;
+	}
+}
+
+.dabkrabe-view {
+	z-index:1;
+}
+.dabkrabe-view__fullscreen {
+	position: fixed;
+	left: 0;
+	top: 0;
+	max-width:100vw;
+	max-height:100vh;
+	width: 100vw;
+	height: 100vh;
+	max-width:100dvw;
+	max-height:100dvh;
+	width: 100dvw;
+	height: 100dvh;
+//	width: calc( var(--vw, 1vw) * 100 );
+//	height: calc( var(--vh, 1vh) * 100 );
+	z-index:10000;
+	background-color: #888;
+
+	.dabkrabe-pop{
+		top: 20px;
+		bottom: auto;
+	}
+}
+//hack for iOS safari 100vh without chrome
+//https://zenn.dev/tak_dcxi/articles/2ac77656aa94c2cd40bf
+//@supports (-webkit-touch-callout: none){
+//	.dabkrabe-view__fullscreen {
+//		height: -webkit-fill-available;
+//	}
+//}
+.dabkrabe-view__fullscreen,
+.dabkrabe-view:fullscreen {
+	.dabkrabe-view-box{
+		width: auto;
+		height: auto;
+		min-width: 88px; /* same as .wiwi-dabkrage-pop + verticalmode left margin */
+	}
+	.dabkrabe-compimages {
+		width: 100%;
+		height: 100%;
+
+		&.fill{
+			img{
+				object-fit: contain;
+			}
+		}
+	}
+
+	.dabkrabe-pop {
+		width: 48px;
+		height: 48px;
+	}
+	.dabkrabe-fullscreen {
+		width: 48px;
+		height: 48px;
+		background-image: url( conf.$assetdir + 'fullscreen-close.svg' );
+	}
+}
+
+/********************/
+.dabkrabe-view.dabkrabe__vertical {
+//	max-width: 100%;
+	//max-height: 100%;//add
+//	position: relative;
+
+//	display: flex;
+//	align-items: center;
+//	justify-content: center;
+
+	&:fullscreen img{
+//		width: auto;
+//		height: auto;
+	}
+}
+.dabkrabe-compimages.dabkrabe__vertical {
+	
+&>.dabkrabe-compimage__2 {
+	height: 100%;
+	clip-path: inset(50% 0 0 0);
+}
+}
+
+.dabkrabe-control.dabkrabe__vertical {
+
+	&>.dabkrabe-sep {
+		top: 50%;
+		left: 0;
+		transform: translate( 0, -50% );
+		width: calc( 50% - conf.$nib-size / 2 );
+		height: conf.$sep-width;
+		border-width: conf.$sep-border-width 0 conf.$sep-border-width 0;
+	}
+	&>.dabkrabe-sep:nth-child(1) {
+		left: 0;
+		right: auto;
+	}
+	&>.dabkrabe-sep:nth-child(2) {
+		left: auto;
+		right: 0;
+	}
+	&>.dabkrabe-nib {
+		top: 50%;
+		left: calc( 50% - conf.$nib-size / 2 );
+		transform-origin: right center;
+		transform: rotate(90deg) translate( 0, 50% );
+
+	}
+
+	&>.dabkrabe-pop{
+		flex-direction: column;
+		bottom: 50%;
+		left: 20px;
+		transform: translate(0, 50%);
+
+//		&>div{
+//			flex: 1 1;
+//		}
+	}
+
+
+}
+.dabkrabe-captions:not(.dabkrabe-captions__edit).dabkrabe__vertical {
+
+	&>.dabkrabe-caption {
+		width: auto;
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, 0);
+	}
+	&>.dabkrabe-caption__before {
+		top: 0;
+		bottom: auto;
+	}
+	&>.dabkrabe-caption__after {
+		top: auto;
+		bottom: 0;
+	}
+}

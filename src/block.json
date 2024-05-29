@@ -1,0 +1,102 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wickerwings/dabkrabe",
+	"version": "1.0.0",
+	"title": "DabKrabe",
+	"category": "media",
+	"icon": "file:./assets/dabkrabe.svg",
+	"description": "Image Comparison Block.",
+	"keywords": [ "images", "photo", "compare", "comparison", "blockeditor" ],
+	"example": {},
+	"supports": {
+		"html": true,
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalSkipSerialization": false,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": false,
+				"width": true
+			}
+		}
+	},
+	"allowedBlocks": [ "core/paragraph" ],
+	"attributes": {
+		"mediaURL1": {
+			"type": "string"
+		},
+		"mediaID1": {
+			"type": "number"
+		},
+		"mediaURL2": {
+			"type": "string"
+		},
+		"mediaID2": {
+			"type": "number"
+		},
+		"sepColor": {
+			"type": "string"
+		},
+		"sepBorder": {
+			"type": "string"
+		},
+		"nibColor": {
+			"type": "string"
+		},
+		"vertical": {
+			"type": "boolean"
+		},
+		"descFlex": {
+			"type": "boolean"
+		},
+		"fullscreen": {
+			"type": "object",
+			"enabled": {
+				"type": "boolean"
+			},
+			"lightbox": {
+				"type": "boolean"
+			}
+		},
+		"captions": {
+			"type": "object",
+			"0": {
+				"type": "boolean"
+			},
+			"1": {
+				"type": "string"
+			},
+			"2": {
+				"type": "string"
+			}
+		},
+		"width": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"objectfit": {
+			"type": "string"
+		},
+		"aspectRatio": {
+			"type": "number"
+		},
+		"alignment":{
+			"type": "string"
+		}
+	},
+	"textdomain": "dabkrabe",
+	"selectors": {
+		"root": ".dabkrabe"
+	},
+	"script": "file:./view.js",
+	"editorScript": ["file:./index.js","jQuery","react"],
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": ["file:./view.js", "jQuery", "react"]
+}

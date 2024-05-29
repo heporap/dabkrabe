@@ -1,0 +1,239 @@
+ @use "./conf";
+
+.wp-block-create-block-dabkrabe {
+	border: 5px solid #f00;
+	background-color: inherit;
+	color: inherit;
+	padding: 5px;
+}
+
+.dabkrabe {
+}
+
+.components-flex.dabkrabe-inspector-flex {
+	row-gap: 0;
+}
+.dabkrabe-inspector-flex button {
+	width: 100%;
+}
+
+.dabkrabe-colorindicator {
+	margin-right: 12px;
+}
+
+.dabkrabe__dropdown{
+	width: 100%;
+}
+
+.dabkrabe-description__flex{
+	display: block;
+
+	// inside of innerblock editor
+	& .block-editor-block-list__layout {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+
+		// innerblock "core/paragraph"
+		& > .wp-block-paragraph {
+			flex-basis: 50%;
+			box-sizing: border-box;
+		}
+	}
+}
+
+
+.dabkrabe-view__edit{
+	position: relative;
+//		padding: 5px;
+	.dabkrabe-view-box{
+		width: auto;
+	}
+
+}
+.dabkrabe-compimages__edit{
+	display: flex;
+	align-content:stretch;
+	position: relative;
+//	min-height: 3em;
+//	min-width: 40em;
+
+	&>img.dabkrabe-compimage {
+//		height: auto;
+		background-color: inherit;
+		flex: 1;
+		width:50%;
+//		margin: .3em 0;
+//		padding: 0;
+		max-width: 100%;
+		clip-path: none;
+		position:static;
+	}
+	&>img.dabkrabe-compimage__1 {
+//		width:50%;
+//		clip-path: inset(0 50% 0 0);
+	}
+	
+	>button.image-button.is-secondary.dabkrabe-mediabutton {
+		background-color: #f6f7f7;
+	}
+
+	&.dabkrabe__vertical{
+		&>img.dabkrabe-compimage {
+			clip-path: none;
+//			clip-path: inset(0 0 50% 0);
+		}
+	
+	}
+	
+}
+
+.dabkrabe-compimages__oneimage{
+	>img.dabkrabe-compimage{
+		position: static;
+		clip-path: none;
+	}
+	>button.button-large.dabkrabe-mediabutton__edit {
+		position: absolute;
+	}
+
+}
+
+/*.dabkrabe-compimages{
+	&.cover>button.image-button.dabkrabe-mediabutton{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&.fill>button.image-button.dabkrabe-mediabutton{
+		width: 100%;
+		height: 100%;
+	}
+	&.contain>button.image-button.dabkrabe-mediabutton{
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}/**/
+
+
+// button with images selected
+/*button.image-button.dabkrabe-mediabutton {
+	height: auto;
+	align-self: stretch;
+//	overflow: hidden;
+	background-color: transparent;
+	padding: 0;
+}/**/
+button.image-button.dabkrabe-mediabutton__edit {
+	position: absolute;
+}
+// button without images
+button.button-large.dabkrabe-mediabutton {
+}
+button.button-large.dabkrabe-mediabutton__edit {
+	position: static;
+//	z-index: 10;
+}
+
+button.dabkrabe-mediabutton:first-of-type {
+	left: 25%;
+}
+button.dabkrabe-mediabutton:last-of-type {
+	right: 25%;
+}
+button.image-button.dabkrabe-mediabutton__edit:first-of-type {
+}
+button.image-button.dabkrabe-mediabutton__edit:last-of-type {
+	
+}
+
+.dabkrabe-control__edit {
+	align-self: stretch;
+	position: absolute;
+	background-color: #888;
+	top: 0;
+	left: 50%;
+	width: 1%;
+	height: 100%;
+	min-width: 3px;
+//	margin-left: -0.5%;
+	overflow: visible;
+	transform: translate( -50% , 0 );
+
+	&>.dabkrabe-pop{
+		display: none;
+	}
+	
+	&>.dabkrabe-sep__edit {
+		top: 0; //as style.scss
+		left: 0; //as style.scss
+		width: 100%; //as style.scss
+		height: 100%; //as style.scss
+		transform: translate(0, 0);
+	}
+	&>.dabkrabe-nib__edit {
+		//top: 50% ; //as style.scss
+		//left: 50%; //as style.scss
+		//left: - calc(conf.$nib-size  * .3 );
+		//margin-left: - calc(conf.$nib-size * .5);
+		//margin-top: - calc(conf.$nib-size * .5);
+		//transform: translate( -50% , conf.$sep-width );
+	}
+	
+	&.dabkrabe__vertical {
+		//align-self: stretch;
+		//position: absolute;
+		//background-color: #888;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: 1%;
+		min-height: 3px;
+	//	margin-left: -0.5%;
+		overflow: visible;
+		transform: translate( 0, -50% );
+	
+		>.dabkrabe-sep__edit{
+			top:0;
+			left:0;
+			//width:100%;
+			//height:100%;
+			transform: translate(0, 0);
+			border-width: conf.$sep-border-width 0 conf.$sep-border-width 0;
+		}
+	}
+
+}
+
+.dabkrabe-captions__edit {
+//	position: absolute;
+//	top: 0;
+//	left: 0;
+//	width: 100%;
+	height: 0;
+	overflow: visible;
+
+	&>.dabkrabe-caption {
+//		position: absolute;
+//		display: inline-block;
+//		width: auto;
+		top: 2em;
+		transform: translate(0, 0);
+//		background-color: rgba( 128, 128, 128, 0.5);
+//		color: #fff;
+	}
+	&>.dabkrabe-caption__before {
+//		left: 0;
+	}
+	&>.dabkrabe-caption__after {
+//		right: 0;
+		text-align: right;
+	}
+}
+.dabkrabe-captions__vertical {
+
+}
+
