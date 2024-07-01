@@ -135,24 +135,19 @@ class DabKrabe {
 	 * @return {DabKrabe} self instance
 	 */
 	initOptions() {
-		const keys = this.$container.data( 'dabkrabe-keys' );
+		this.options = [];
+		const optionAttr = this.$container[ 0 ].dataset[ 'dabkrabeOptions' ];
+		if( ! optionAttr ) {
+			return this;
+		}
 
-		if ( ! keys ) {
-			return;
-		}
-		for( const key of keys.split( ',' ) ) {
-			const val =
-				this.$container[ 0 ].dataset[
-					'dabkrabeOptions' +
-						key[ 0 ].toUpperCase() +
-						key.substring( 1 )
-				];
-			if ( val ) {
-				this.options[ key ] = val;
-			} else {
-				delete this.options[ key ];
+		optionAttr.split(';').forEach( item => {
+			const tmp = item.split('=');
+			if ( tmp.length > 1 ) {
+				this.options[ tmp[0] ] = tmp[1];
 			}
-		}
+		})
+
 		return this;
 	}
 

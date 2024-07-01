@@ -93,12 +93,11 @@ $objectfit_classname = ( ! empty( $attributes['objectfit'] ) ) ? ' ' . $attribut
  * Create paramators to Javascript with dataset attribute.
  */
 $view_options = '';
-$options_key  = array();
+$options_keys  = array();
 if ( ! empty( $attributes['vertical'] ) ) {
-	$options_key[] = 'vertical';
-	$view_options .= dabkrabe_create_data_attributes( 'vertical', $attributes['vertical'] );
+	$options_keys[ 'vertical' ] = $attributes['vertical'];
 }
-$attr_options_keys = implode( ',', $options_key );
+$view_options = dabkrabe_create_data_attributes( $options_keys );
 
 /**
  * Dimension of comparison view.
@@ -142,16 +141,16 @@ if ( ! empty( $attributes['captions'] ) && (bool) $attributes['captions'][0] ) {
 $has_fullscreen = ( ! empty( $attributes['fullscreen'] ) && $attributes['fullscreen']['enabled'] );
 
 ?>
-<div <?php echo get_block_wrapper_attributes( array( 'class' => 'dabkrabe' ) ); ?> style="<?php echo esc_attr( $border_style ); ?>">
-	<div class="dabkrabe-view<?php echo $vertical_classname; ?>" style="<?php echo esc_attr( $view_style ); ?>" data-dabkrabe-keys="<?php echo $attr_options_keys; ?>" <?php echo $view_options; ?>>
+<div <?php echo wp_kses_post( get_block_wrapper_attributes( array( 'class' => 'dabkrabe' ) ) ); ?> style="<?php echo esc_attr( $border_style ); ?>">
+	<div class="dabkrabe-view<?php echo esc_attr( $vertical_classname ); ?>" style="<?php echo esc_attr( $view_style ); ?>" data-dabkrabe-options="<?php echo esc_attr( $view_options ); ?>">
 		<div class="dabkrabe-view-box" style="<?php echo esc_attr( $aspect_ratio ); ?>">
 			<div class="dabkrabe-compimages<?php echo esc_attr( "{$vertical_classname}{$objectfit_classname}" ); ?>">
-				<?php echo $img_1; ?>
-				<?php echo $img_2; ?>
+				<?php echo wp_kses_post( $img_1 ); ?>
+				<?php echo wp_kses_post( $img_2 ); ?>
 			</div>
 			<div class="dabkrabe-captions<?php echo esc_attr( $vertical_classname ); ?>">
-				<div class="dabkrabe-caption dabkrabe-caption__before"><?php echo $captions_before; ?></div>
-				<div class="dabkrabe-caption dabkrabe-caption__after"><?php echo $captions_after; ?></div>
+				<div class="dabkrabe-caption dabkrabe-caption__before"><?php echo wp_kses_post( $captions_before ); ?></div>
+				<div class="dabkrabe-caption dabkrabe-caption__after"><?php echo wp_kses_post( $captions_after ); ?></div>
 			</div>
 			<div class="dabkrabe-control<?php echo esc_attr( $vertical_classname ); ?>">
 				<div class="dabkrabe-sep" style="<?php echo esc_attr( $sep_style ); ?>"></div>
@@ -176,6 +175,6 @@ $has_fullscreen = ( ! empty( $attributes['fullscreen'] ) && $attributes['fullscr
 		</div>
 	</div>
 	<?php if ( $desc_content ) : ?>
-		<div class="dabkrabe-description<?php echo esc_attr( $desc_classname ); ?>"><?php echo $desc_content; ?></div>
+		<div class="dabkrabe-description<?php echo esc_attr( $desc_classname ); ?>"><?php echo wp_kses_post( $desc_content ); ?></div>
 	<?php endif; ?>
 </div>

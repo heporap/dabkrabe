@@ -669,8 +669,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							? null
 							: { ...viewStyle }
 					}
-					data-dabkrabe-keys="vertical"
-					data-dabkrabe-options-vertical={ vertical ? '1' : '' }
+					data-dabkrabe-options={ vertical ? 'vertical=1' : 'vertical=' }
 				>
 					<div
 						className="dabkrabe-view-box"

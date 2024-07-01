@@ -4,7 +4,7 @@
  * Description:    Images comparison block with slidebar.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:        1.0.0
+ * Version:        1.0.2
  * Author:         Wicker Wings
  * Author URI:     https://wickersings.jp/
  * License:        GPL-2.0-or-later
@@ -75,8 +75,11 @@ add_action( 'wp_print_scripts', 'dabkrabe_print_scripts' );
  * @param string $key id of optional paramater.
  * @param string $val value of optional paramater.
  */
-function dabkrabe_create_data_attributes( $key, $val ) {
-	$result = 'data-dabkrabe-options-' . esc_attr( trim( $key ) ) . '="' . esc_attr( $val ) . '" ';
+function dabkrabe_create_data_attributes( $keys ) {
+	$result = '';
+	foreach( $keys as $key => $val ){
+		$result .= esc_attr( trim( $key ) ) . '=' . esc_attr( $val ) . ';';
+	}
 
 	return $result;
 }
